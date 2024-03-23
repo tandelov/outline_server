@@ -21,9 +21,9 @@ if [ ! -f install_server.sh ]; then
 fi
 
 # Command 2: Edit the install_server.sh script
-# Use 'sed' to find the line containing '-restart always --net host' within the function start_shadowbox
-# and replace it with the new desired line.
-sed -i "/start_shadowbox/,/}/ s|-restart always --net host|--restart always -t 1080:1080 -p 8080:8080|" install_server.sh
+# This command searches for the string in the file and replaces every occurrence
+
+sed -i 's/--restart always --net host/--restart always -p 1080:1080 -p 8080:8080/g' install_server.sh
 
 # Command 3: Make the script executable
 sudo chmod +x ./install_server.sh
